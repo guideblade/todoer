@@ -1,11 +1,17 @@
 import express from 'express';
+import path from 'path';
+
 const app = express();
 const port = 3000;
 
-app.use(express.static('public')); // Serving static files from the 'public' folder
+app.set('view engine', 'ejs'); // Set EJS as the view engine
+app.set('../views', path.join(__dirname, 'views')); // Set the views directory (create a 'views' folder)
+
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('Hello Worldddd!');
+  const variableMessage = 'Dynamic Message from Backend!';
+  res.render('index', { message: variableMessage }); // Render the 'index' view with the variable
 });
 
 app.listen(port, () => {
