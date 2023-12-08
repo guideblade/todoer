@@ -1,4 +1,5 @@
 process.env.YDB_SDK_PRETTY_LOGS = '1';
+process.env.YDB_SERVICE_ACCOUNT_KEY_FILE_CREDENTIALS = './key.json';
 
 import express from 'express';
 import path from 'path';
